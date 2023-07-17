@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from sensor.views import HelloAPI, ProximityListCreateView, ProximityRetrieveUpdateDestroyView
 
 urlpatterns = [
@@ -26,3 +28,6 @@ urlpatterns = [
     path('proximity/<int:pk>/', ProximityRetrieveUpdateDestroyView.as_view(),
          name='proximity-retrieve-update-destroy'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -86,8 +86,13 @@ WSGI_APPLICATION = 'django_iot.wsgi.app'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'URL': env('POSTGRES_URL'),
+        'NAME': env('PGNAME'),
+        'USER': env('PGUSER'),
+        'PASSWORD': env('POSTGRES_PASSWORD'),
+        'HOST': env('PGHOST'),
+        'PORT': env('PGPORT')
     }
 }
 
@@ -131,6 +136,9 @@ STATIC_URL = 'static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
