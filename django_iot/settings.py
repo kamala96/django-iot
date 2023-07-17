@@ -31,7 +31,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
 
 
 # Application definition
@@ -77,7 +77,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'django_iot.wsgi.application'
+# WSGI_APPLICATION = 'django_iot.wsgi.application'
+WSGI_APPLICATION = 'django_iot.wsgi.app'
 
 
 # Database
