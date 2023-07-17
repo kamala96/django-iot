@@ -1,2 +1,2 @@
 /venv
-/django_iot/.env
+*.env
