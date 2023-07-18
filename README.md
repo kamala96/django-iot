@@ -48,4 +48,5 @@ Now you can access the Django rest server and explore the available APIs.
 We would like to acknowledge the following resources and libraries that have been instrumental in the development of **`django-iot`**:
 - Django: https://www.djangoproject.com
 - Arduino IDE: https://www.arduino.cc/en/software
+
 Thank you to all the contributors who have helped improve this project. Your contributions are greatly appreciated!
