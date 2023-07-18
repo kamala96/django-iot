@@ -26,7 +26,7 @@ urlpatterns = [
     path('proximity/', ProximityListCreateView.as_view(),
          name='proximity-list-create'),
     path('proximity/<int:pk>/', ProximityRetrieveUpdateDestroyView.as_view(),
-         name='proximity-retrieve-update-destroy'),
+         name='proximity-retrieve-update-destroy')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

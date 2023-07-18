@@ -13,7 +13,7 @@ class HelloAPI(APIView):
 
 
 class ProximityListCreateView(generics.ListCreateAPIView):
-    queryset = Proximity.objects.all()
+    queryset = Proximity.objects.all().order_by('-timestamp')
     serializer_class = ProximitySerializer
 
 
