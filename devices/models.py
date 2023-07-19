@@ -23,12 +23,12 @@ class Controller(models.Model):
     #     DeviceType, on_delete=models.CASCADE, related_name='controllers')
     model = models.CharField(max_length=100)
     network_address = models.GenericIPAddressField()
-    unique_id = models.CharField(max_length=100, unique=True)
+    chip_id = models.CharField(max_length=100, unique=True)
     access_key = models.CharField(max_length=128, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.type} {self.model} - {self.unique_id}'
+        return f'{self.type} {self.model} - {self.chip_id}'
 
     def save(self, *args, **kwargs):
         if self._state.adding or 'access_key' in self.get_deferred_fields():
@@ -40,13 +40,13 @@ class Sensor(models.Model):
     type = models.ForeignKey(
         DeviceType, on_delete=models.CASCADE, related_name='type_sensors')
     model = models.CharField(max_length=100)
-    unique_id = models.CharField(max_length=100, unique=True)
+    chip_id = models.CharField(max_length=100, unique=True)
     controller = models.ForeignKey(
         Controller, on_delete=models.CASCADE, related_name='controller_sensors')
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.type} {self.model} - {self.unique_id}'
+        return f'{self.type} {self.model} - {self.chip_id}'
 
 
 class Proximity(models.Model):

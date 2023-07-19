@@ -4,15 +4,20 @@ from rest_framework.response import Response
 from rest_framework import generics
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework import serializers
 # from rest_framework.permissions import IsAuthenticated
-from .models import Proximity
-from .serializers import ProximitySerializer
+from .models import Proximity, Sensor
+from .serializers import ProximitySerializer, CustomTokenObtainPairSerializer
 
 # Create your views here.
 
 
 class TokenObtainPairView(TokenObtainPairView):
     pass
+
+
+class CustomTokenObtainPairView(TokenObtainPairView):
+    serializer_class = CustomTokenObtainPairSerializer
 
 
 class HelloAPI(APIView):
