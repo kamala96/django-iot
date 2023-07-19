@@ -18,10 +18,11 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from sensor.views import HelloAPI, ProximityListCreateView, ProximityRetrieveUpdateDestroyView
+from devices.views import TokenObtainPairView, HelloAPI, ProximityListCreateView, ProximityRetrieveUpdateDestroyView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('hello/', HelloAPI.as_view(), name='hello'),
     path('proximity/', ProximityListCreateView.as_view(),
          name='proximity-list-create'),
