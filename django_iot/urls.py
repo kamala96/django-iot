@@ -18,17 +18,16 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from devices.views import CustomTokenObtainPairView, HelloAPI, ProximityListCreateView, ProximityRetrieveUpdateDestroyView
+from devices.views import ProximityListView, ProximityRetrieveView, ProximityUpdateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/token/', CustomTokenObtainPairView.as_view(),
-         name='token_obtain_pair'),
-    path('hello/', HelloAPI.as_view(), name='hello'),
-    path('proximity/', ProximityListCreateView.as_view(),
-         name='proximity-list-create'),
-    path('proximity/<int:pk>/', ProximityRetrieveUpdateDestroyView.as_view(),
-         name='proximity-retrieve-update-destroy')
+    path('api/proximity/', ProximityListView.as_view(),
+         name='api-proximity-list'),
+    path('api/proximity/<int:pk>/', ProximityRetrieveView.as_view(),
+         name='api-proximity-retrieve'),
+    path('api/proximity/update/', ProximityUpdateView.as_view(),
+         name='api-proximity-update'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
